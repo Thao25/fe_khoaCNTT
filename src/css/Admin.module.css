@@ -1,0 +1,177 @@
+/* Admin.module.css */
+
+/* Định dạng Sidebar */
+.sidebar {
+  background: "linear-gradient(to right, #00c3e50,#001529)"; /* Xám đậm */
+  box-shadow: 2px 0px 20px rgba(0, 0, 0, 0.1);
+  height: auto;
+  padding: 20px;
+  transition: width 0.3s ease-in-out;
+}
+
+/* Mở rộng sidebar khi hover */
+.sidebar:hover {
+  width: 280px;
+}
+
+/* Logo */
+.logo {
+  color: #fff;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  margin: 30px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: transform 0.3s ease-in-out;
+  border-bottom: 2px solid #ffdb58; /* Vàng nhạt làm điểm nhấn */
+}
+
+/* Logo phóng to khi hover */
+.logo:hover {
+  transform: scale(1.1);
+}
+.menu {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: start;
+  height: 87%;
+  transition: height 0.3s ease-in-out;
+  background-color: #f0f0f0;
+}
+
+/* Menu Item */
+.menuItem {
+  font-weight: 500;
+  font-size: 16px;
+  color: #b0b0b0; /* Màu chữ sáng */
+  padding-top: 12px;
+  transition: all 0.3s ease-in-out;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+/* Màu sắc khi hover vào menu item */
+
+/* Định dạng SubMenu */
+.ant-menu-submenu {
+  background-color: transparent !important; /* Đảm bảo SubMenu có nền trong suốt */
+  font-size: 16px;
+  color: #b0b0b0;
+}
+
+.ant-menu-submenu-title {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  font-weight: 500;
+  color: #b0b0b0;
+  transition: all 0.3s ease-in-out;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+/* Khi hover vào SubMenu Title */
+.ant-menu-submenu-title:hover {
+  background-color: #4caf50; /* Xanh lá khi hover */
+  color: #fff; /* Chữ trắng khi hover */
+  transform: scale(1.05); /* Tăng kích thước khi hover */
+}
+
+/* Menu Item trong SubMenu */
+.ant-menu-submenu-popup .ant-menu-item {
+  padding: 12px 24px; /* Thêm padding cho các item trong SubMenu */
+  font-weight: 500;
+  color: #b0b0b0;
+}
+
+.ant-menu-submenu-popup .ant-menu-item:hover {
+  background-color: #4caf50; /* Xanh lá khi hover */
+  color: #fff; /* Chữ trắng khi hover */
+}
+
+/* Hiệu ứng hover cho SubMenu */
+.subMenuTitle {
+  font-weight: 600;
+  font-size: 16px;
+  color: #130505;
+  margin-bottom: 10px;
+  display: inline;
+}
+
+/* Hover SubMenu */
+.subMenuTitle:hover {
+  color: #ffdb58; /* Màu vàng khi hover */
+}
+
+/* Content */
+.content {
+  margin: 16px 16px;
+  padding: 24px;
+  min-height: 280px;
+  background-color: eiblack;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  color: #333;
+}
+
+/* Hiệu ứng hover cho Content */
+.content:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Các phần tử text trong content */
+.content h2,
+.content p {
+  color: #333;
+  font-size: 18px;
+}
+
+/* Các phần tử button trong content */
+.content button {
+  background-color: #007bff; /* Xanh da trời */
+  border: none;
+  padding: 10px 10px;
+  color: white;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Hiệu ứng khi hover vào button */
+.content button:hover {
+  background-color: #0056b3; /* Xanh đậm hơn khi hover */
+}
+
+/* Định dạng cho thanh scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.small-image {
+  width: 200px; /* Giảm kích thước ảnh */
+  height: auto; /* Giữ tỉ lệ ảnh */
+  margin: 10px 0;
+  display: block;
+  max-width: 100%;
+}

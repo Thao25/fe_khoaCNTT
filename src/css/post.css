@@ -1,0 +1,217 @@
+/* Container chính bao quanh toàn bộ layout */
+.posts-container {
+  display: flex;
+  gap: 15px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+
+  padding: 20px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  background-color: aliceblue;
+}
+
+/* Phần bên trái chứa danh sách bài viết */
+.main {
+  flex: 2;
+  width: 66%; /* 2 phần chiều rộng của layout */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tiêu đề của phần bài viết */
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #db3232;
+  margin-bottom: 20px;
+}
+.section-title:hover {
+  color: #4966db;
+}
+
+/* Phần tử bài viết */
+.post-item {
+  display: flex;
+  margin-bottom: 20px;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 250px; /* Đảm bảo chiều cao cố định */
+}
+.post-date {
+  font-size: 14px;
+  color: #888;
+}
+
+.post-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Left: Ảnh bài viết */
+.left {
+  display: flex;
+  width: 100%;
+}
+
+.post-image-container {
+  width: 40%; /* Khung ảnh chiếm 40% chiều rộng */
+  height: 100%; /* Giữ chiều cao cố định */
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden; /* Ẩn phần ảnh vượt ra ngoài khung */
+}
+
+.post-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Giữ tỷ lệ ảnh, cắt bớt phần thừa để vừa khung */
+  transition: transform 0.3s ease;
+}
+
+/* Right: Tiêu đề bài viết */
+.post-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.post-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.post-title:hover {
+  color: #d32f2f;
+}
+/* CSS cho đoạn preview */
+.post-preview {
+  font-size: 14px;
+  color: #777;
+  margin-top: 10px;
+  line-height: 1.6;
+  white-space: normal; /* Đảm bảo phần text có thể xuống dòng */
+}
+
+/* Phần bên phải chứa 5 bài viết mới nhất */
+.right {
+  flex: 1;
+  width: 33%; /* 1 phần chiều rộng của layout */
+  background-color: rgb(192, 222, 248);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 15px;
+  flex-direction: column;
+  gap: 5px; /* Khoảng cách giữa các phần tử trong phần bên phải */
+  height: 100%; /* Chiều cao tự động */
+}
+
+.latest-post-item {
+  display: flex;
+  margin-bottom: 10px;
+  background: rgb(217, 233, 248);
+  padding: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  gap: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.latest-post-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.latest-post-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+.latest-post-title {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.latest-post-title a {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+
+.latest-post-title a:hover {
+  color: #d32f2f;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .posts-container {
+    flex-direction: column;
+  }
+
+  .main,
+  .right {
+    width: 100%;
+  }
+
+  .latest-post-item {
+    flex-direction: column;
+  }
+
+  .latest-post-image {
+    width: 100%;
+    height: 120px;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+/* Nút phân trang */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  color: #333;
+  padding: 10px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+.pagination button:hover {
+  background-color: #f1f1f1;
+}
+
+.pagination button.active {
+  background-color: #db3232;
+  color: #fff;
+}
+
+.pagination button:disabled {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}

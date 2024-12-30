@@ -1,0 +1,195 @@
+/* Thiết lập chung cho Layout */
+.layout-content {
+  margin-left: 24px;
+  margin-right: 24px;
+  padding: 24px;
+  background-color: aliceblue;
+  min-height: 280px;
+  border-radius: 8px;
+}
+
+/* Tiêu đề cấp độ khóa học */
+h3 {
+  font-size: 26px;
+  color: #34495e;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #3498db;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+/* Card khóa học */
+.ant-card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s ease-in-out;
+}
+
+.ant-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Hình ảnh trong Card */
+.ant-card-cover img {
+  object-fit: cover;
+  height: 150px;
+  width: 50%;
+  border-bottom: 2px solid #f0f0f0;
+  border-radius: 5px;
+  transition: opacity 0.3s;
+}
+
+.ant-card-cover img:hover {
+  opacity: 0.8;
+}
+
+/* Nội dung bên trong Card */
+.ant-card-body {
+  padding: 16px;
+  background-color: #fff;
+}
+
+.ant-card-title {
+  font-size: 18px;
+  color: #2c3e50;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+/* Danh sách khóa học */
+.ant-list-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Button "Hiển thị tất cả" */
+.ant-btn-link {
+  color: #3498db;
+  font-size: 16px;
+  margin-top: 20px;
+  display: block;
+  text-align: center;
+  font-weight: 500;
+}
+
+.ant-btn-link:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+/* Trạng thái không có khóa học (Empty State) */
+.ant-empty {
+  text-align: center;
+  margin-top: 50px;
+  color: #7f8c8d;
+  font-size: 18px;
+}
+
+/* Loading spinner */
+.ant-spin {
+  display: block;
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Định dạng mô tả trong Card */
+p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #7f8c8d;
+  margin-bottom: 10px;
+}
+
+/* Giới hạn số lượng item hiển thị */
+.list-item-limited {
+  max-height: 360px; /* Giới hạn độ cao để tránh card tràn ra ngoài */
+  overflow: hidden;
+  display: block;
+}
+/* Căn chỉnh header (level) và nút "Hiển thị tất cả" */
+.level-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.level-header h3 {
+  font-size: 26px;
+  color: #34495e;
+  margin-bottom: 0;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.ant-btn-link {
+  font-size: 16px;
+  color: #3498db;
+  font-weight: 500;
+  text-align: right;
+}
+
+.ant-btn-link:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+/* Giới hạn mô tả khóa học hiển thị 2 dòng */
+.card-description {
+  display: -webkit-box; /* Cần thiết để sử dụng -webkit-line-clamp */
+  -webkit-line-clamp: 2; /* Hiển thị tối đa 2 dòng */
+  -webkit-box-orient: vertical; /* Thiết lập hướng của các dòng văn bản */
+  overflow: hidden; /* Ẩn phần văn bản vượt quá */
+  text-overflow: ellipsis; /* Thêm dấu ba chấm (...) khi văn bản quá dài */
+  font-size: 14px; /* Cỡ chữ cho mô tả */
+  color: #555; /* Màu chữ cho mô tả */
+}
+/* Đổi màu chữ của các tên level thành đỏ */
+.level-header h3 {
+  color: red; /* Màu đỏ cho tên level */
+  font-size: 20px; /* Cỡ chữ tùy chỉnh */
+  font-weight: bold; /* Làm đậm chữ nếu cần */
+}
+.scroll-to-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: #d32f2f;
+  color: white;
+  font-size: 28px;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Tạo bóng mờ đẹp */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out; /* Hiệu ứng mượt mà */
+  z-index: 1000; /* Đảm bảo nút nằm trên các phần tử khác */
+  opacity: 0; /* Ban đầu ẩn nút */
+  visibility: hidden; /* Ban đầu không thể nhìn thấy */
+}
+
+/* Hiệu ứng hover cho nút */
+.scroll-to-top-btn:hover {
+  background-color: #c62828;
+  transform: scale(1.2); /* Phóng to nút khi hover */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Làm bóng mờ mạnh hơn khi hover */
+}
+
+/* Nút hiện ra khi cuộn xuống */
+.scroll-to-top-btn.show {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease-in-out; /* Hiệu ứng hiện nút mượt mà */
+}
+
+/* Hiệu ứng cuộn khi nhấn */
+.scroll-to-top-btn:active {
+  transform: scale(0.95); /* Tạo hiệu ứng khi người dùng click vào nút */
+}

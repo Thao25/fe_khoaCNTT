@@ -1,0 +1,41 @@
+/* AutoSlideCarousel.css */
+.auto-slide-carousel {
+  max-width: 1200px;
+
+  margin: auto;
+  padding: 10px;
+
+  border-radius: 8px;
+}
+
+.carousel-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px; /* Chiều cao của carousel */
+}
+
+.carousel-slide-link {
+  display: block;
+}
+
+.carousel-slide-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Thêm các style cho các nút điều hướng (mũi tên) */
+.ant-carousel .slick-prev,
+.ant-carousel .slick-next {
+  font-size: 20px;
+  color: #fff;
+  opacity: 0.7;
+}
+
+.ant-carousel .slick-prev:hover,
+.ant-carousel .slick-next:hover {
+  color: #0073e6;
+  opacity: 1;
+}

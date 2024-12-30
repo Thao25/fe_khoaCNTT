@@ -1,0 +1,177 @@
+/* Container chính bao quanh các bài viết */
+.post-detail-container {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  max-width: 1200px;
+  margin-left: 30px;
+  margin-right: 5px;
+  background-color: aliceblue;
+}
+
+.post-detail {
+  display: flex;
+  gap: 30px;
+  width: 100%;
+}
+/* Carousel */
+.ant-carousel .slick-slide {
+  text-align: center;
+}
+
+.ant-carousel .slick-slide img {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+/* Custom mũi tên điều hướng */
+.ant-carousel .slick-prev,
+.ant-carousel .slick-next {
+  background-color: rgba(0, 0, 0, 0.5); /* Màu nền bán trong suốt */
+  border-radius: 50%; /* Làm tròn nút */
+  color: white; /* Màu chữ trắng */
+  padding: 10px; /* Kích thước nút */
+  font-size: 18px; /* Kích thước mũi tên */
+}
+
+.ant-carousel .slick-prev {
+  left: 10px; /* Nút mũi tên trái */
+}
+
+.ant-carousel .slick-next {
+  right: 10px; /* Nút mũi tên phải */
+}
+
+/* Nội dung bài viết */
+.post-content {
+  flex: 3;
+  max-width: 100%;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* Tin liên quan */
+.related-posts {
+  flex: 1;
+  min-width: 250px;
+  background-color: rgb(217, 233, 248);
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  height: 700px;
+}
+
+.related-posts h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #d32f2f;
+  margin-bottom: 20px;
+}
+
+/* Tin liên quan - Mỗi bài viết trong cột bên phải */
+.related-post-item {
+  display: flex;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.related-post-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+.related-post-title a {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+
+.related-post-title a:hover {
+  color: #d32f2f;
+}
+.image-container {
+  width: 90%;
+  height: auto;
+  margin: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: "inline-block";
+}
+.post-image {
+  width: 90%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: "inline-block";
+}
+
+@media (max-width: 768px) {
+  .post-detail {
+    flex-direction: column;
+  }
+
+  .post-content {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .related-posts {
+    max-width: 100%;
+  }
+
+  .related-post-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.scroll-to-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: #d32f2f;
+  color: white;
+  font-size: 28px;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Tạo bóng mờ đẹp */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out; /* Hiệu ứng mượt mà */
+  z-index: 1000; /* Đảm bảo nút nằm trên các phần tử khác */
+  opacity: 0; /* Ban đầu ẩn nút */
+  visibility: hidden; /* Ban đầu không thể nhìn thấy */
+}
+
+/* Hiệu ứng hover cho nút */
+.scroll-to-top-btn:hover {
+  background-color: #c62828;
+  transform: scale(1.2); /* Phóng to nút khi hover */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Làm bóng mờ mạnh hơn khi hover */
+}
+
+/* Nút hiện ra khi cuộn xuống */
+.scroll-to-top-btn.show {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease-in-out; /* Hiệu ứng hiện nút mượt mà */
+}
+
+/* Hiệu ứng cuộn khi nhấn */
+.scroll-to-top-btn:active {
+  transform: scale(0.95); /* Tạo hiệu ứng khi người dùng click vào nút */
+}
