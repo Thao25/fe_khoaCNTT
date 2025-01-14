@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
+import { Spin } from "antd";
+import "../css/article.css";
 const ArticlePage = () => {
   const { menuSlug, subMenuSlug, id } = useParams(); // Lấy menuSlug, subMenuSlug và id từ URL
   const [articleData, setArticleData] = useState(null);
@@ -28,20 +29,36 @@ const ArticlePage = () => {
     };
 
     fetchArticleData();
-  }, [id]); // Mỗi khi id thay đổi, sẽ gọi lại API
+  }, [id]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div
+        style={{
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
+      >
+        <Spin />
+      </div>
+    );
   }
 
   if (!articleData) {
-    return <div>Article not found</div>;
+    return null;
   }
 
   return (
-    <div>
-      <h1>{articleData.title}</h1>
-      <p>{articleData.content}</p>
+    <div className="article-container">
+      <div className="article-page">
+        <div className="article-title">{articleData.title}</div>
+        <div
+          dangerouslySetInnerHTML={{ __html: articleData.content }}
+          className="article-content"
+        />
+      </div>
     </div>
   );
 };

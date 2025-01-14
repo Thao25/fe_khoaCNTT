@@ -7,13 +7,16 @@ import {
   MailTwoTone,
   PhoneTwoTone,
   EnvironmentTwoTone,
+  YoutubeOutlined,
 } from "@ant-design/icons";
+import { UseApp } from "../context/AppProvider";
 
 const { Text } = Typography;
 const { Footer: AntFooter } = Layout;
 
 const Footer = () => {
   const [footerData, setFooterData] = useState(null);
+  const { reloadFooter, setReloadFooter } = UseApp();
 
   useEffect(() => {
     const fetchFooterData = async () => {
@@ -26,7 +29,8 @@ const Footer = () => {
     };
 
     fetchFooterData();
-  }, []);
+    setReloadFooter(false);
+  }, [reloadFooter]);
 
   if (!footerData) {
     return (
@@ -39,12 +43,31 @@ const Footer = () => {
   return (
     <AntFooter
       style={{
-        background: "linear-gradient(to right, #2c3e50,#001529)", // Tông màu xanh đậm
+        backgroundColor: "#333",
         color: "#fff",
-        padding: "40px 0",
-        borderTop: "4px solid #ffd700", // Viền vàng nhẹ
+        padding: "10px 0",
+        borderTop: "4px solid #BE0F0F", // Viền vàng nhẹ
+        position: "relative", // Để đặt ảnh nền dưới footer
+        zIndex: 1,
+        margin: "0 auto",
       }}
     >
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundImage:
+            "url('https://media.istockphoto.com/id/1390542860/video/black-pastel-colored-blank-and-empty-waving-and-animated-cloth-flag-texture-black-background.jpg?s=640x640&k=20&c=Z1qRydKbN0WVq3eksAgQEzXED-6gqfBm2wysYuuK0z0=')", // Thêm URL của tấm ảnh của bạn ở đây
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: 0.2, // Đặt độ mờ cho ảnh
+          zIndex: -1, // Đảm bảo ảnh ở dưới footer
+        }}
+      ></div>
+
       <div
         style={{ maxWidth: "1200px", margin: "0 auto", textAlign: "center" }}
       >
@@ -65,12 +88,11 @@ const Footer = () => {
             <Space direction="vertical" size="middle">
               <Text
                 style={{
-                  color: "#b0b0b0",
+                  color: "#EEEAEE",
                   fontSize: "16px",
                   display: "flex",
                   alignItems: "center",
                   gap: "8px",
-                  transform: "scale(1.1)",
                 }}
               >
                 <PhoneTwoTone
@@ -80,12 +102,11 @@ const Footer = () => {
               </Text>
               <Text
                 style={{
-                  color: "#b0b0b0",
+                  color: "#EEEAEE",
                   fontSize: "16px",
                   display: "flex",
                   alignItems: "center",
                   gap: "8px",
-                  transform: "scale(1.1)",
                 }}
               >
                 <MailTwoTone style={{ color: "#28a745", marginLeft: "30px" }} />
@@ -93,12 +114,11 @@ const Footer = () => {
               </Text>
               <Text
                 style={{
-                  color: "#b0b0b0",
+                  color: "#EEEAEE",
                   fontSize: "16px",
                   display: "flex",
                   alignItems: "center",
                   gap: "7px",
-                  transform: "scale(1.1)",
                 }}
               >
                 <EnvironmentTwoTone
@@ -127,61 +147,78 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  color: "#b0b0b0",
+                  color: "#EEEAEE",
                   textDecoration: "none",
                   fontSize: "16px",
                   hover: { color: "#28a745", transform: "scale(1.1)" },
 
                   display: "flex",
-                  marginLeft: "30px",
+                  marginLeft: "50px",
                 }}
               >
                 Giới thiệu
+              </a>
+              <a
+                href={footerData.tuyen_sinh}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: "#EEEAEE",
+                  textDecoration: "none",
+                  fontSize: "16px",
+                  hover: { color: "#28a745", transform: "scale(1.1)" },
+
+                  display: "flex",
+                  marginLeft: "50px",
+                }}
+              >
+                Tuyển sinh
+              </a>
+              <a
+                href={footerData.tuyen_dung}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: "#EEEAEE",
+                  textDecoration: "none",
+                  fontSize: "16px",
+                  hover: { color: "#28a745", transform: "scale(1.1)" },
+
+                  display: "flex",
+                  marginLeft: "50px",
+                }}
+              >
+                Tuyển dụng
               </a>
               <a
                 href={footerData.program_url}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  color: "#b0b0b0",
+                  color: "#EEEAEE",
                   textDecoration: "none",
                   fontSize: "16px",
                   hover: { color: "#28a745", transform: "scale(1.1)" },
 
                   display: "flex",
-                  marginLeft: "30px",
+                  marginLeft: "50px",
                 }}
               >
                 Chương trình đào tạo
               </a>
-              <a
-                href="https://moet.gov.vn/Pages/home.aspx"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  color: "#b0b0b0",
-                  textDecoration: "none",
-                  fontSize: "16px",
-                  hover: { color: "#28a745", transform: "scale(1.1)" },
 
-                  display: "flex",
-                  marginLeft: "30px",
-                }}
-              >
-                Bộ Giáo dục và Đào tạo
-              </a>
               <a
                 href="http://thuvienso.actvn.edu.vn/"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  color: "#b0b0b0",
+                  color: "#EEEAEE",
                   textDecoration: "none",
                   fontSize: "16px",
                   hover: { color: "#28a745", transform: "scale(1.1)" },
 
                   display: "flex",
-                  marginLeft: "30px",
+                  marginLeft: "50px",
                 }}
               >
                 Trung tâm Thông tin Thư viện
@@ -208,14 +245,15 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  color: "#b0b0b0",
+                  color: "#EEEAEE",
                   textDecoration: "none",
                   display: "flex",
                   alignItems: "center",
+                  fontSize: "16px",
                   gap: "8px",
                 }}
               >
-                <FacebookOutlined style={{ color: "#4267B2" }} />
+                <FacebookOutlined style={{ color: "#1DA1F2" }} />
                 Facebook
               </a>
               <a
@@ -223,15 +261,47 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  color: "#b0b0b0",
+                  color: "#EEEAEE",
                   textDecoration: "none",
                   display: "flex",
                   alignItems: "center",
+                  fontSize: "16px",
                   gap: "8px",
                 }}
               >
-                <GlobalOutlined style={{ color: "#6c757d" }} />
+                <GlobalOutlined style={{ color: "#1DA1F2" }} />
                 Website
+              </a>
+              <a
+                href={footerData.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: "#EEEAEE",
+                  textDecoration: "none",
+                  display: "flex",
+                  alignItems: "center",
+                  fontSize: "16px",
+                  gap: "8px",
+                }}
+              >
+                <YoutubeOutlined style={{ color: "#1DA1F2" }} />
+                Youtube
+              </a>
+              <a
+                href="https://moet.gov.vn/Pages/home.aspx"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: "#EEEAEE",
+                  textDecoration: "none",
+                  display: "flex",
+                  alignItems: "center",
+                  fontSize: "16px",
+                  gap: "8px",
+                }}
+              >
+                Bộ Giáo dục và Đào tạo
               </a>
             </Space>
           </Col>
@@ -252,13 +322,15 @@ const Footer = () => {
             {footerData.video_link ? (
               <iframe
                 width="100%"
-                height="150px"
+                height="160px"
                 src={footerData.video_link}
                 title="Video Giới thiệu"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 style={{
+                  marginTop: "20px",
+                  boxShadow: "0 0 10px rgba(0, 0, 0, 0.3)",
                   borderRadius: "8px",
                   border: "2px solid #ffd700",
                 }}
@@ -274,12 +346,12 @@ const Footer = () => {
         {/* Dòng bản quyền */}
         <div
           style={{
-            marginTop: "30px",
-            borderTop: "1px solid #ffd700",
-            paddingTop: "20px",
+            marginTop: "20px",
+            borderTop: "1px solid #BE0F0F",
+            paddingTop: "10px",
           }}
         >
-          <Text style={{ color: "#b0b0b0" }}>
+          <Text style={{ color: "#EEEAEE" }}>
             &copy; 2024 Khoa Công nghệ Thông tin. Tất cả quyền được bảo vệ.
           </Text>
         </div>

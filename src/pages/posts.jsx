@@ -52,7 +52,6 @@ const Posts = () => {
     <div className="posts-container">
       {/* Danh sách tất cả các bài viết (Bên trái) */}
       <div className="main">
-        <h2 className="section-title">Danh sách bài viết</h2>
         {currentPosts.map((post) => (
           <div key={post.id} className="post-item">
             <div className="left">
@@ -66,21 +65,24 @@ const Posts = () => {
                 </Link>
               </div>
               <div className="post-content">
-                <h3 className="post-title">
-                  <Link to={`/post/${post.id}`}>{post.Title}</Link>
+                <h3>
+                  <Link to={`/post/${post.id}`} className="post-title">
+                    {post.Title}
+                  </Link>
                 </h3>
                 <div className="post-date">
                   {new Date(post.createdAt).toLocaleString()}
                 </div>
-                <p className="post-preview">
+                <p>
                   <div
                     dangerouslySetInnerHTML={{
                       __html: removeImagesFromContent(
-                        post.Content.length > 200
-                          ? `${post.Content.substring(0, 200)}...`
+                        post.Content.length > 300
+                          ? `${post.Content.substring(0, 300)}...`
                           : post.Content
                       ),
                     }}
+                    className="post-preview"
                   />
                 </p>
               </div>

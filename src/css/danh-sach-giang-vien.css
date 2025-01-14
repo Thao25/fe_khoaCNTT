@@ -1,0 +1,132 @@
+/* CSS cho trang Giảng Viên (danh-sach-giang-vien) */
+.dsgv-page .articles-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Định dạng 4 cột */
+  gap: 15px; /* Khoảng cách giữa các bài viết */
+  padding: 20px;
+}
+
+.dsgv-page .giang-vien-item {
+  background-color: aliceblue;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.dsgv-page .giang-vien-item .article-title {
+  color: #007bff;
+  text-decoration: none;
+}
+.dsgv-page .giang-vien-item .article-thumbnail {
+  margin-bottom: 10px; /* Tạo khoảng cách giữa ảnh và tiêu đề */
+}
+
+.dsgv-page .giang-vien-item .article-thumbnail img {
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+  margin-left: 20px;
+}
+
+.dsgv-page .giang-vien-item .article-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.dsgv-page .giang-vien-item .article-content {
+  display: none; /* Ẩn phần nội dung đối với giảng viên */
+}
+
+.dsgv-page .giang-vien-item .view-detail {
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* CSS cho trang có nhiều bài viết */
+.articles-list {
+  gap: 20px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Định dạng 4 cột */
+}
+
+.article-item {
+  display: flex;
+  /* flex-direction: row; */
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  width: 100%;
+}
+/* .article-item-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+} */
+.article-thumbnail {
+  flex: 0 0 40%; /* Chiếm 40% chiều rộng */
+  margin-right: 20px;
+}
+
+.article-thumbnail img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* .article-content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+} */
+
+.article-title .p {
+  font-size: 14px;
+  color: #007bff;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-decoration: none;
+}
+
+.article-content {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #333;
+  margin-bottom: 0;
+}
+
+.view-detail {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

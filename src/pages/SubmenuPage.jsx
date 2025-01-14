@@ -2,12 +2,17 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import { Spin } from "antd";
+import "../css/danh-sach-giang-vien.css";
+import { RightOutlined, LeftOutlined } from "@ant-design/icons";
 
 const SubmenuPage = () => {
   const { menuSlug, subMenuSlug } = useParams(); // Lấy menuSlug và subMenuSlug từ URL
   const [submenu, setSubmenu] = useState(null); // Lưu submenu được chọn
-  const [firstArticle, setFirstArticle] = useState(null); // Lưu bài viết đầu tiên
+  const [articles, setArticles] = useState([]); // Lưu danh sách bài viết
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1); // Trang hiện tại
+  const [totalPages, setTotalPages] = useState(1); // Tổng số trang
+  const articlesPerPage = 6;
 
   // Lấy danh sách tất cả submenu từ API
   useEffect(() => {
@@ -28,7 +33,7 @@ const SubmenuPage = () => {
 
           // Lấy danh sách bài viết liên kết với submenu này
           const articleIds = foundSubmenu.articles; // Đây là mảng các ID bài viết liên quan đến submenu
-          if (articleIds.length > 0) {
+          if (articleIds && articleIds.length > 0) {
             // Gọi API lấy các bài viết
             const articleRequests = articleIds.map((articleId) =>
               axios.get(`http://localhost:1337/articles/${articleId.id}`)
@@ -37,13 +42,15 @@ const SubmenuPage = () => {
             // Chờ tất cả các yêu cầu lấy bài viết hoàn thành
             const articlesResponse = await Promise.all(articleRequests);
 
-            // Sắp xếp bài viết theo ngày tạo (giảm dần)
             const sortedArticles = articlesResponse
               .map((response) => response.data)
-              .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+              .sort((a, b) => {
+                // Sắp xếp theo từ mới đến cũ (mặc định)
+                return new Date(b.createdAt) - new Date(a.createdAt);
+              });
 
-            // Lấy bài viết đầu tiên
-            setFirstArticle(sortedArticles[0]);
+            setArticles(sortedArticles);
+            setTotalPages(Math.ceil(sortedArticles.length / articlesPerPage));
           }
         }
       } catch (error) {
@@ -54,7 +61,7 @@ const SubmenuPage = () => {
     };
 
     fetchSubmenuData();
-  }, [subMenuSlug]); // Chạy lại khi subMenuSlug thay đổi
+  }, [subMenuSlug]);
 
   if (loading) {
     return (
@@ -72,26 +79,141 @@ const SubmenuPage = () => {
   }
 
   if (!submenu) {
-    return <div>Submenu not found</div>;
+    return null;
   }
 
-  if (!firstArticle) {
-    return <div>No articles found for this submenu</div>;
-  }
+  const isGiangVien = subMenuSlug === "danh-sach-giang-vien";
+  const isSingleArticle = articles.length === 1;
+  const getCurrentArticles = () => {
+    const indexOfLastArticle = currentPage * articlesPerPage;
+    const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
+    return articles.slice(indexOfFirstArticle, indexOfLastArticle);
+  };
 
+  // Hàm điều hướng trang
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+  const removeImagesFromContent = (content) => {
+    // Dùng regex để tìm và loại bỏ tất cả thẻ <img>
+    const contentWithoutImages = content.replace(/<img[^>]*>/g, "");
+    return contentWithoutImages;
+  };
   return (
-    <div>
-      <h2 style={{ textAlign: "center", margin: "20px 20px" }}>
-        {firstArticle.title}
-      </h2>
-      <div
-        style={{
-          border: "1px solid #ccc",
-          padding: "10px",
-          margin: "20px 20px",
-        }}
-      >
-        <p>{firstArticle.content}</p>
+    <div className={`article-container ${isGiangVien ? "dsgv-page" : ""}`}>
+      <div className="article-page">
+        {isSingleArticle ? (
+          // Nếu chỉ có 1 bài viết
+          <div className="article">
+            <div className="article-title">{articles[0].title}</div>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: articles[0].content,
+              }}
+              className="article-content"
+            />
+          </div>
+        ) : (
+          // Nếu có nhiều hơn 1 bài viết
+          <div className="articles-list">
+            {articles.map((article, index) => (
+              <div
+                key={article.id}
+                className={`article-item ${
+                  isGiangVien ? "giang-vien-item" : ""
+                }`}
+              >
+                <div className="article-item-content">
+                  <div className="article-thumbnail">
+                    <img
+                      src={
+                        article.image?.url
+                          ? `http://localhost:1337${article.image.url}`
+                          : // : "https://via.placeholder.com/150"
+                            "https://tuyensinh.actvn.edu.vn/wp-content/uploads/2024/03/42.jpg"
+                      }
+                      alt={article.title}
+                      className="article-image"
+                    />
+                  </div>
+                  <div className="article-title">
+                    <Link
+                      to={`/${menuSlug}/${submenu.subMenuSlug}/${article.id}`}
+                      style={{
+                        textDecoration: "none",
+                      }}
+                    >
+                      <p
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            article.title.length > 45
+                              ? `${article.title.substring(0, 45)}...`
+                              : article.title,
+                        }}
+                        className="article-title"
+                        style={{
+                          textDecoration: "none",
+                          fontSize: "14px",
+                          color: " #007bff",
+                          fontWeight: "bold",
+                          margin: "0",
+                          padding: "0",
+                        }}
+                      />
+                    </Link>
+                  </div>
+
+                  {!isGiangVien ? (
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: removeImagesFromContent(
+                          article.content.length > 100
+                            ? `${article.content.substring(0, 100)}...`
+                            : article.content
+                        ),
+                      }}
+                      className="article-content"
+                      style={{
+                        fontSize: "14px",
+                        color: " #333",
+                        fontWeight: "300",
+                        margin: "0",
+                        padding: "5px",
+                      }}
+                    />
+                  ) : null}
+                  {!isGiangVien ? (
+                    <Link
+                      to={`/${menuSlug}/${submenu.subMenuSlug}/${article.id}`}
+                      className="view-detail"
+                    >
+                      Xem chi tiết
+                    </Link>
+                  ) : null}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+        {articles.length > 1 && (
+          <div className="pagination">
+            <button
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+            >
+              <LeftOutlined />
+            </button>
+            <span>
+              {currentPage} / {totalPages}
+            </span>
+            <button
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+            >
+              <RightOutlined />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -2,17 +2,16 @@
 .post-detail-container {
   display: flex;
   justify-content: center;
-  padding: 30px;
-  max-width: 1200px;
-  margin-left: 30px;
-  margin-right: 5px;
+  margin: 0 auto;
+  padding-top: 10px;
+  max-width: 1400px;
   background-color: aliceblue;
 }
 
 .post-detail {
   display: flex;
   gap: 30px;
-  width: 100%;
+  max-width: 90%;
 }
 /* Carousel */
 .ant-carousel .slick-slide {
@@ -32,7 +31,7 @@
   background-color: rgba(0, 0, 0, 0.5); /* Màu nền bán trong suốt */
   border-radius: 50%; /* Làm tròn nút */
   color: white; /* Màu chữ trắng */
-  padding: 10px; /* Kích thước nút */
+  padding: 6px; /* Kích thước nút */
   font-size: 18px; /* Kích thước mũi tên */
 }
 
@@ -47,23 +46,45 @@
 /* Nội dung bài viết */
 .post-content {
   flex: 3;
-  max-width: 100%;
+  width: 73%;
+  display: flex;
   background-color: #fff;
-  padding: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 10px;
   border-radius: 8px;
   box-sizing: border-box;
 }
+.post-content h1 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #223771;
+  margin-bottom: 0px;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.date {
+  padding: 10px 30px;
+}
+.post-content-p p {
+  padding: 0 20px;
 
+  width: 100%;
+  font-size: 14px;
+  color: #292d31;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
 /* Tin liên quan */
 .related-posts {
   flex: 1;
-  min-width: 250px;
+  width: 33%;
+  display: flex;
+  flex-direction: column;
   background-color: rgb(217, 233, 248);
-  padding: 30px;
+  padding: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  height: 700px;
+  height: fit-content;
+  margin-top: 20px;
 }
 
 .related-posts h3 {
@@ -76,8 +97,10 @@
 /* Tin liên quan - Mỗi bài viết trong cột bên phải */
 .related-post-item {
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  padding: 0;
   align-items: center;
+  height: 100%;
 }
 
 .related-post-image {
@@ -89,9 +112,9 @@
 }
 
 .related-post-title a {
-  font-size: 16px;
-  font-weight: bold;
-  color: #333;
+  font-size: 14px;
+  font-weight: 550;
+  color: #0f2182;
   text-decoration: none;
 }
 
@@ -114,6 +137,9 @@
   border-radius: 8px;
   margin-bottom: 20px;
   display: "inline-block";
+}
+.back {
+  padding-left: 20px;
 }
 
 @media (max-width: 768px) {

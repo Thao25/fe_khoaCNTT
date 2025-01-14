@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f0f2f5; /* Màu nền sáng */
+  background-color: aliceblue; /* Màu nền sáng */
 }
 .logo {
   text-align: center;
@@ -12,12 +12,13 @@
 }
 
 .login-form {
-  background-color: #fff;
+  background: linear-gradient(to bottom, #b4c4f0, #edf1fd);
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow nhẹ cho form */
   width: 100%;
   max-width: 400px;
+  height: 550px;
 }
 
 .login-form .ant-form-item-label {

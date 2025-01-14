@@ -199,7 +199,7 @@ const PostAdmin = () => {
     {
       title: "STT",
       dataIndex: "stt",
-      render: (_, __, index) => index + 1, // Hiển thị số thứ tự
+      render: (_, __, index) => index + 1,
     },
     {
       title: "Title",
@@ -271,7 +271,7 @@ const PostAdmin = () => {
   }
 
   return (
-    <div className="posts-container">
+    <div>
       <div
         style={{
           marginBottom: "16px",

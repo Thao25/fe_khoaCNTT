@@ -1,22 +1,70 @@
 /* AutoSlideCarousel.css */
 .auto-slide-carousel {
-  max-width: 1200px;
+  width: 1100px;
 
-  margin: auto;
-  padding: 10px;
-
+  margin: 5px auto;
+  background-color: aliceblue;
   border-radius: 8px;
 }
-
+.auto-slide-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: aliceblue;
+}
 .carousel-slide {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 400px; /* Chiều cao của carousel */
+  position: relative;
 }
 
 .carousel-slide-link {
   display: block;
+  width: 1100px;
+  z-index: 1;
+  position: absolute;
+  margin: 0 auto;
+}
+.carousel-slide-title h3 {
+  font-size: 18px;
+  font-weight: bold;
+  width: 100%;
+  color: white; /* Đảm bảo tiêu đề có màu trắng */
+  margin: 0;
+  text-transform: capitalize;
+  transition: color 0.3s ease-in-out;
+  white-space: nowrap; /* Đảm bảo tiêu đề không bị xuống dòng */
+  animation: slide-left 8s linear infinite;
+}
+.carousel-slide-title {
+  position: absolute;
+  bottom: 60px;
+  left: 20px;
+  right: 20px;
+  width: 600px;
+  height: 60px;
+  z-index: 2;
+  color: white;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 8px;
+  opacity: 1;
+  overflow: hidden;
+}
+@keyframes slide-left {
+  0% {
+    transform: translateX(100%); /* Bắt đầu từ bên phải */
+  }
+  100% {
+    transform: translateX(-100%); /* Kết thúc ở bên trái */
+  }
+}
+.carousel-slide-title h3.reset-animation {
+  animation: none;
+  /* Chờ một thời gian ngắn trước khi chạy lại animation */
+  animation: slide-left 8s linear infinite;
 }
 
 .carousel-slide-image {
@@ -24,6 +72,7 @@
   height: auto;
   border-radius: 8px;
   object-fit: cover;
+  margin: 0 auto;
 }
 
 /* Thêm các style cho các nút điều hướng (mũi tên) */

@@ -1,136 +1,163 @@
-/* notification.module.css */
-
-/* Container chính của trang thông báo */
+/* Container chính của thông báo */
 .notificationsContainer {
   display: flex;
-  justify-content: space-between;
-  gap: 10px; /* Khoảng cách giữa các phần bên trái và bên phải */
-  margin-left: 20px;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 1200px;
+  justify-content: space-between; /* Đảm bảo bên trái và bên phải nằm cạnh nhau */
+  gap: 20px; /* Khoảng cách giữa phần bên trái và bên phải */
+
   background-color: aliceblue;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 /* Phần bên trái: Danh sách thông báo */
 .main {
-  width: 65%; /* Chiều rộng cố định cho phần bên trái */
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  height: auto; /* Chiều cao tự động */
+  flex: 1;
+  padding: 40px;
+  padding-left: 60px;
 }
 
-/* Tiêu đề của phần thông báo */
-.sectionTitle {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #f14e4e;
+.leftColumns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 30px;
 }
 
-/* Mỗi thông báo */
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 15px;
+}
+
+/* Mỗi khối thông báo trong cột bên trái */
 .notificationItem {
-  background-color: rgb(217, 233, 248);
+  width: 400px; /* Kích thước cố định */
+  height: 160px; /* Kích thước cố định */
+  background-color: #fff;
   padding: 10px;
-  margin-bottom: 10px;
-  margin-left: 10px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.notificationItem:hover {
-  transform: translateY(-5px); /* Hiệu ứng hover nhẹ */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row; /* Nội dung xếp theo chiều ngang */
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden; /* Đảm bảo các phần tử không vượt ra ngoài */
 }
 
+.notificationImageContainer {
+  width: 40%;
+  height: 92%;
+  overflow: hidden;
+}
+
+.notificationImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.notificationContent {
+  width: 55%; /* Nội dung chiếm 55% chiều rộng còn lại */
+  padding-left: 5px;
+  display: flex;
+  flex-direction: column;
+}
+.notificationContent p {
+  color: #333;
+}
 .notificationTitle {
-  font-size: 18px;
-  font-weight: bold;
-  color: #5f0863;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 10px;
+  text-transform: none;
 }
 
 .notificationText {
-  font-size: 16px;
-  color: #555;
-  margin: 10px 0;
+  font-size: 14px;
+  color: #141313;
+  line-height: 1.4;
+}
+
+.notificationDateContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #888;
+  position: absolute;
+  bottom: 10px;
 }
 
 .notificationDate {
-  font-size: 14px;
+  font-size: 12px;
   color: #888;
+  margin-bottom: 10px;
+}
+
+/* Phần phân trang nằm dưới danh sách thông báo */
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20px;
+  width: 100%;
 }
 
 /* Phần bên phải: Thông báo mới nhất */
 .right {
-  width: 30%; /* Chiều rộng cố định cho phần bên phải */
-  background-color: rgb(147, 200, 246);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  display: flex;
+  width: 300px; /* Chiều rộng cố định */
+  height: 100%; /* Chiều cao tự động */
+  padding: 10px;
+  margin-right: 25px;
+  padding-top: 20px;
   margin-top: 20px;
-  margin-left: 10px;
-  margin-right: 15px;
-  flex-direction: column;
-  gap: 5px; /* Khoảng cách giữa các phần tử trong phần bên phải */
-  height: auto; /* Chiều cao tự động */
+  background-color: rgb(192, 222, 248);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.right h2 {
+  margin-bottom: 20px;
 }
 
 .latestNotificationItem {
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-
-  background-color: rgb(217, 233, 248);
-  padding: 10px;
-  margin-bottom: 5px;
-
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 15px;
 }
-.latestNotificationItem:hover {
-  transform: translateY(-5px); /* Hiệu ứng hover nhẹ */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+.sectionTitle {
+  color: #db3232;
+  padding-top: 10px;
 }
 .latestNotificationItem h3 {
-  font-size: 16px;
-  font-weight: bold;
-  color: #04172b;
-}
-
-.latestNotificationItem p {
   font-size: 14px;
-  color: #777;
+  color: #223771;
+  margin-bottom: 5px;
 }
-
-/* Phân trang */
-.antPagination {
-  margin-top: 20px;
+.notificationTitle {
+  text-decoration: none;
+  text-transform: none;
+  color: #0f2182;
+  font-weight: 550;
+}
+.notificationDateContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #888;
+}
+.paginationWrapper {
   display: flex;
   justify-content: center;
-  width: 100%;
+  margin-top: 20px;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .notificationsContainer {
-    flex-direction: column;
-    margin: 20px;
-    padding: 10px;
-  }
-
-  .main,
-  .right {
-    width: 100%; /* Full width khi màn hình nhỏ */
-    margin-top: 20px;
-  }
-
-  .right {
-    margin-top: 15px; /* Khoảng cách giữa phần bên trái và bên phải */
-  }
+.paginationWrapper .ant-pagination {
+  display: flex;
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  margin-top: 20px; /* Khoảng cách từ phần trên */
+  width: 100%; /* Đảm bảo phần phân trang chiếm toàn bộ chiều rộng của trang */
+  justify-content: center; /* Căn giữa phân trang */
 }

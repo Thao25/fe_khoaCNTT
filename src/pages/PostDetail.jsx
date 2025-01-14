@@ -76,8 +76,8 @@ const PostDetail = () => {
       <div className="post-detail">
         {/* Nội dung bài viết bên trái */}
         <div className="post-content">
-          <h1>{post.Title}</h1>
-          <p>
+          <h1 className="post-title">{post.Title}</h1>
+          <p className="date">
             <strong>Ngày đăng:</strong>{" "}
             {new Date(post.createdAt).toLocaleString()}
           </p>
@@ -102,12 +102,16 @@ const PostDetail = () => {
             </div>
           )}
           {/* Hiển thị nội dung bài viết */}
-          <div className="post-content">
-            <ReactMarkdown rehypePlugins={[rehypeRaw]}>
-              {getFullImageUrl(post.Content)}
-            </ReactMarkdown>
-          </div>
-          <Link to="/post">Quay lại</Link>
+          <p>
+            <div className="post-content-p">
+              <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                {getFullImageUrl(post.Content)}
+              </ReactMarkdown>
+            </div>
+          </p>
+          <Link to="/post" className="back">
+            Quay lại
+          </Link>
         </div>
 
         {/* Tin liên quan bên phải */}

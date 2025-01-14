@@ -1,11 +1,15 @@
 import AutoSlideCarousel from "../components/layout/autoSlide";
+import CourseCarousel from "../components/layout/cardCourse";
+import LatestPostsPage from "../components/layout/LatestPostsPage";
+
 import React from "react";
-import "../css/autoSlide.css";
 
 const HomePage = () => {
   return (
-    <div className="auto-slide-carousel">
+    <div className="home-page">
       <AutoSlideCarousel />
+      <LatestPostsPage />
+      <CourseCarousel />
     </div>
   );
 };

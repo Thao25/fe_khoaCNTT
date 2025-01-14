@@ -1,0 +1,131 @@
+/* Tổng quan giao diện */
+.container-admin-header {
+  padding: 30px;
+  width: 700px;
+  margin: 0 auto;
+  background-color: #f7fafc;
+  border-radius: 12px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
+  font-family: "Poppins", sans-serif;
+}
+
+.create-menu-button {
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-right: 15px;
+  margin-left: 35px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.create-menu-button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+/* Style cho Modal */
+.ant-modal {
+  border-radius: 10px;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.ant-modal-header {
+  background-color: #4caf50;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 20px;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.ant-modal-body {
+  padding: 30px;
+}
+
+.article-id {
+  font-size: 12px; /* Kích thước chữ nhỏ hơn để phân biệt */
+  color: #888; /* Màu sắc mờ để không làm phân tán sự chú ý */
+  margin-top: 5px; /* Khoảng cách trên để tách biệt ID và tiêu đề */
+  font-family: Arial, sans-serif; /* Phông chữ dễ đọc */
+  font-weight: bold; /* Làm cho ID nổi bật một chút */
+}
+/* Style cho Collapse */
+.ant-collapse-header {
+  background-color: #f1f8f6;
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.ant-collapse-header:hover {
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+.ant-collapse-item {
+  margin-bottom: 12px;
+}
+
+.ant-collapse-content {
+  background-color: #f7fafc;
+  border-radius: 8px;
+}
+
+/* Style cho các item */
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+ul li {
+  margin-bottom: 15px;
+  padding: 12px 18px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul li:hover {
+  background-color: #e6f7e6;
+}
+
+ul li .anticon {
+  cursor: pointer;
+  margin-left: 15px;
+  font-size: 18px;
+}
+
+ul li .anticon:hover {
+  color: #4caf50;
+}
+
+.popconfirm-button {
+  background-color: #ff4d4f;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.popconfirm-button:hover {
+  background-color: #e5373f;
+}

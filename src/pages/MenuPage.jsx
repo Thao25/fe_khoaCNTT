@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import { Spin } from "antd";
-
+import "../css/article.css";
 const MenuPage = () => {
   const { menuSlug } = useParams(); // Lấy menuSlug từ URL
   const [menuData, setMenuData] = useState(null);
@@ -23,10 +23,19 @@ const MenuPage = () => {
 
           // Kiểm tra xem menu có Articles hay không
           if (menu.articles && menu.articles.length > 0) {
-            // Lấy bài viết đầu tiên của menu theo ngày tạo
-            const sortedArticles = menu.articles.sort(
-              (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
-            );
+            let sortedArticles = [];
+            if (menuSlug === "about") {
+              // Sắp xếp từ cũ nhất đến mới nhất khi menuSlug là "lecturer"
+              sortedArticles = menu.articles.sort(
+                (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+              );
+            } else {
+              // Sắp xếp từ mới nhất đến cũ nhất với các menuSlug khác
+              sortedArticles = menu.articles.sort(
+                (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+              );
+            }
+
             const firstArticle = sortedArticles[0]; // Bài viết đầu tiên
             const articleResponse = await axios.get(
               `http://localhost:1337/articles/${firstArticle.id}`
@@ -38,7 +47,7 @@ const MenuPage = () => {
             if (firstSubmenu.articles && firstSubmenu.articles.length > 0) {
               const firstSubmenuArticle = firstSubmenu.articles[0]; // Bài viết đầu tiên của submenu
               const articleResponse = await axios.get(
-                `http://localhost:1337/articles/${firstSubmenuArticle.id}`
+                `http://localhost:1337/articles/${firstSubmenuArticle}`
               );
               setFirstArticle(articleResponse.data); // Lưu bài viết vào state
             }
@@ -76,17 +85,20 @@ const MenuPage = () => {
   }
 
   return (
-    <div>
+    <div className="article-container">
       <div style={{ display: "flex" }}>
         {/* Hiển thị submenu bên trái nếu có */}
         {menuData.submenus && menuData.submenus.length > 0 ? (
-          <div style={{ flex: 1, padding: "20px" }}>
+          <div style={{ flex: 1, padding: "10px" }}>
             <h2
               style={{
-                marginBottom: "10px",
+                margin: "20px auto",
                 display: "flex",
-                justifyContent: "center",
                 color: "#d32f2f",
+                fontSize: "22pt",
+                fontWeight: "bold",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
               {menuData.menu}
@@ -97,11 +109,19 @@ const MenuPage = () => {
                   key={submenu.id}
                   style={{
                     marginBottom: "10px",
-                    display: "flex",
-                    justifyContent: "center",
+                    marginLeft: "10px",
+                    Width: "100%",
                   }}
                 >
-                  <Link to={`/${menuSlug}/${submenu.subMenuSlug}`}>
+                  <Link
+                    to={`/${menuSlug}/submenu/${submenu.subMenuSlug}`}
+                    style={{
+                      color: "#333",
+                      textDecoration: "none",
+                      display: "flex",
+                      width: "100%",
+                    }}
+                  >
                     {submenu.subMenu}
                   </Link>
                 </li>
@@ -110,21 +130,28 @@ const MenuPage = () => {
           </div>
         ) : null}
 
-        {/* Hiển thị bài viết bên phải, nếu không có submenu thì chiếm toàn bộ màn hình */}
         <div
           style={{
             flex: menuData.submenus && menuData.submenus.length > 0 ? 4 : 1,
-            padding: "20px",
+            Width: "900px",
+            margin: "0 auto",
+            backgroundColor: "aliceblue",
           }}
+          className="article-container"
         >
           {firstArticle ? (
-            <div style={{ border: "1px solid #ccc", padding: "10px" }}>
-              <h3>{firstArticle.title}</h3>
-              <p>{firstArticle.content}</p>
+            <div className="article-page">
+              <div className="article-content">
+                <div className="article-title">{firstArticle.title}</div>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: firstArticle.content,
+                  }}
+                  className="article-content"
+                />
+              </div>
             </div>
-          ) : (
-            <p>No articles available</p>
-          )}
+          ) : null}
         </div>
       </div>
     </div>

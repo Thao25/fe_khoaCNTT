@@ -1,0 +1,119 @@
+.latest-posts-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  gap: 30px;
+  background-color: aliceblue; /* Màu nền nhẹ cho toàn trang */
+  border-radius: 8px;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.image-section {
+  flex: 1;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.background-image {
+  width: 100%;
+  height: 80%;
+  border-radius: 8px;
+  background-color: aliceblue;
+  padding-top: 30px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.posts-section {
+  flex: 2.1;
+  margin-right: 20px;
+}
+.line {
+  width: 100%;
+  height: 1px;
+  color: blue;
+  font-weight: 100;
+  margin: 10px;
+  opacity: 0.5;
+}
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px auto;
+  color: #d32f2f;
+  background-color: #e7e9ea;
+  width: 100%;
+}
+
+.ant-card {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.ant-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.ant-card-meta-title {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333; /* Màu tiêu đề */
+}
+
+.ant-card-meta-description {
+  font-size: 14px;
+  color: #777; /* Màu mô tả */
+}
+
+.ant-card-cover img {
+  border-radius: 8px;
+  object-fit: cover;
+  height: 120px; /* Giảm chiều cao của ảnh để bài viết nhỏ hơn */
+  width: 90%;
+}
+
+.posts-section .ant-row {
+  margin-top: 10px;
+}
+
+.posts-section .ant-col {
+  margin-bottom: 20px; /* Khoảng cách giữa các card */
+}
+
+.posts-section .ant-card-body {
+  padding: 12px;
+}
+
+@media (max-width: 768px) {
+  .latest-posts-page {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .image-section {
+    width: 100%;
+    height: 200px;
+  }
+
+  .posts-section {
+    width: 100%;
+  }
+
+  .ant-card-cover img {
+    height: 120px; /* Giảm chiều cao ảnh khi màn hình nhỏ */
+  }
+
+  .ant-card-meta-title {
+    font-size: 14px;
+  }
+
+  .ant-card-meta-description {
+    font-size: 12px;
+  }
+}

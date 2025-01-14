@@ -7,7 +7,7 @@ import NotificationAdmin from "../pages/notificationAdmin.jsx";
 import { AuthContext } from "../components/context/auth.context.jsx";
 import AdminFooter from "./footerAdmin.jsx";
 import styles from "../css/Admin.module.css"; // Import CSS Module
-
+import AdminHeaderPage from "./AdminHeaderPage.jsx";
 const { SubMenu } = Menu;
 const { Sider, Content } = Layout;
 
@@ -34,12 +34,8 @@ const Admin = () => {
       case "4":
         return <NotificationAdmin />;
       case "5":
-        return <h2>Quản Lý thông tin</h2>;
-      case "5-1":
-        return <h2>Giới thiệu</h2>;
-      case "5-2":
-        return <h2>Liên hệ</h2>;
-      case "5-3":
+        return <AdminHeaderPage />;
+      case "6":
         return <AdminFooter />;
       default:
         return <PostAdmin />;
@@ -53,14 +49,19 @@ const Admin = () => {
   return (
     <Layout style={{ minHeight: "100vh" }}>
       {/* Sidebar */}
-      <Sider width={250} className={styles.sidebar}>
+      <Sider
+        width={250}
+        className={styles.sidebar}
+        style={{ backgroundColor: "#333" }}
+      >
         <div className={styles.logo}>Khoa CNTT</div>
         <Menu
           mode="vertical "
           defaultSelectedKeys={["1"]}
-          selectedKeys={[selectedMenu]} // Gắn state vào selectedKeys
-          onClick={handleMenuClick} // Xử lý khi chọn mục mới
+          selectedKeys={[selectedMenu]}
+          onClick={handleMenuClick}
           className={styles.menu}
+          style={{ backgroundColor: "#fff", borderRadius: borderRadiusLG }}
         >
           <Menu.Item key="1" className={styles.menuItem}>
             Quản lý tin tức
@@ -76,32 +77,25 @@ const Admin = () => {
           <Menu.Item key="4" className={styles.menuItem}>
             Quản lý thông báo
           </Menu.Item>
-          <SubMenu
-            key="5"
-            title={
-              <span className={styles.subMenuTitle}>Quản lý thông tin</span>
-            }
-          >
-            <Menu.Item key="5-1" className={styles.subMenuItem}>
-              Giới thiệu
+
+          <Menu.Item key="5" className={styles.menuItem}>
+            Quản lý Navbar
+          </Menu.Item>
+          {hasRole("admin") && auth.isAuthenticated && (
+            <Menu.Item key="6" className={styles.menuItem}>
+              Quản lý footer
             </Menu.Item>
-            <Menu.Item key="5-2" className={styles.subMenuItem}>
-              Liên hệ
-            </Menu.Item>
-            <Menu.Item key="5-3" className={styles.subMenuItem}>
-              Footer
-            </Menu.Item>
-          </SubMenu>
+          )}
         </Menu>
       </Sider>
 
       {/* Content Area */}
       <Layout
         style={{
-          marginLeft: 10,
-          marginTop: 0,
-          paddingTop: 0,
-          backgroundColor: "#f0f0f0",
+          // marginLeft: 10,
+          // marginTop: 0,
+          // paddingTop: 0,
+          backgroundColor: "aliceblue",
         }}
       >
         <Content

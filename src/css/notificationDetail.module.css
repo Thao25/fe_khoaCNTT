@@ -1,8 +1,16 @@
-/* notificationDetail.module.css */
+.Container {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  max-width: 1400px;
+  padding-left: 20px;
+  margin: 0 auto;
+  background-color: aliceblue;
+}
 .notificationDetailContainer {
   padding: 20px;
-  max-width: 900px;
-  margin: 40px auto;
+  width: 900px;
+  margin: 30px auto;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -10,39 +18,41 @@
 }
 
 .notificationDetailContainer h1 {
-  font-size: 32px;
+  font-size: 22px;
   font-weight: bold;
-  color: #333;
+  color: #223771;
   margin-bottom: 20px;
   line-height: 1.4;
   text-transform: uppercase;
 }
 
 .notificationDetailContainer p {
-  font-size: 16px;
-  color: #555;
-  line-height: 1.6;
-  margin-bottom: 15px;
+  font-size: 14px;
+  color: #292d31;
+  line-height: 1.4;
+  margin-bottom: 10px;
 }
 
 .notificationDetailContainer .notificationDate {
   font-size: 14px;
   color: #888;
-  margin-top: -5px;
+  margin-top: 5px;
+  padding-left: 20px;
 }
 
 .notificationContent {
-  margin-top: 30px;
-  font-size: 16px;
-  color: #333;
-  line-height: 1.8;
+  font-size: 14px;
+  color: #292d31;
+  line-height: 1.4;
   text-align: justify;
+  padding: 10px 20px;
 }
 
 .notificationContent img {
-  max-width: 100%;
+  max-width: 98%;
   height: auto;
-  margin: 20px 0;
+  margin: 20px 10px;
+  padding: 10px;
 }
 
 .notificationDetailContainer .backLink {
@@ -59,4 +69,7 @@
 
 .notificationDetailContainer .backLink:hover {
   background-color: #0056b3;
+}
+.back {
+  padding-left: 20px;
 }

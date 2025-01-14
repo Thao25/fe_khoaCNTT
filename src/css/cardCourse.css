@@ -1,0 +1,89 @@
+.course-carousel {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  gap: 15px;
+  background-color: aliceblue;
+}
+
+.course-cards-container {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  position: relative;
+}
+.latest-posts-page-content {
+  display: flex;
+  flex-direction: row; /* Chuyển lại bố cục ngang */
+  justify-content: space-between;
+  gap: 30px;
+}
+.course-card h4 {
+  font-size: 15px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+  padding-top: 0;
+  text-align: center;
+  height: fit-content;
+  overflow: hidden;
+}
+.course-card p {
+  font-size: 14px;
+
+  color: #555;
+  margin: 0;
+  padding: 0;
+  text-align: start;
+  height: fit-content;
+  overflow: hidden;
+}
+.program-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px auto;
+  color: #d32f2f;
+  background-color: #e7e9ea;
+}
+.line {
+  width: 100%;
+  height: 1px;
+  color: blue;
+  font-weight: 100;
+  margin: 10px;
+  opacity: 0.5;
+}
+.course-card {
+  width: 250px;
+  height: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 10px;
+  text-align: center;
+}
+
+.arrow-button {
+  width: 40px; /* Kích thước chiều rộng của nút */
+  height: 40px; /* Kích thước chiều cao của nút */
+  border-radius: 8px; /* Làm tròn các góc nếu cần */
+  display: flex; /* Căn giữa icon */
+  justify-content: center; /* Căn giữa icon theo chiều ngang */
+  align-items: center; /* Căn giữa icon theo chiều dọc */
+  padding: 0; /* Xóa bỏ padding mặc định */
+  font-size: 20px;
+}
+
+.btnleft {
+  left: 0;
+}
+
+.btnright {
+  right: 0;
+}

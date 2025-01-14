@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Input, Button, Form, Space, Typography, message, Spin } from "antd";
+import { UseApp } from "../components/context/AppProvider";
 const { Text } = Typography;
+// import { useFooter } from "../components/context/FooterContext";
 
 const AdminFooter = () => {
   const [footerData, setFooterData] = useState(null);
+  const { reloadFooter, setReloadFooter } = UseApp();
   const [loading, setLoading] = useState(false);
-
+  // const { footerData, loading, updateFooterData } = useFooter();
   useEffect(() => {
     // Lấy thông tin footer hiện tại
     const fetchFooterData = async () => {
       try {
         const response = await axios.get("http://localhost:1337/footers");
-        setFooterData(response.data[0]); // Giả sử dữ liệu trả về là mảng, lấy phần tử đầu tiên
+        setFooterData(response.data[0]);
       } catch (error) {
         console.error("Error fetching footer data:", error);
       }
@@ -35,6 +38,7 @@ const AdminFooter = () => {
         }
       ); // Cập nhật footer với ID 1
       message.success("Cập nhật thành công!");
+      setReloadFooter(true);
     } catch (error) {
       console.error("Error saving footer data:", error);
       message.error("Có lỗi xảy ra. Thử lại sau.");
@@ -42,6 +46,11 @@ const AdminFooter = () => {
       setLoading(false);
     }
   };
+
+  // const handleSave = async (values) => {
+  //   await updateFooterData(values); // Cập nhật dữ liệu footer qua context
+  //   message.success("Cập nhật thành công!");
+  // };
 
   if (!footerData) {
     return (
@@ -93,6 +102,30 @@ const AdminFooter = () => {
           <Input />
         </Form.Item>
         <Form.Item
+          label="Tuyển sinh"
+          name="tuyen_sinh"
+          rules={[
+            {
+              required: true,
+              message: "Vui nhập link bài liên kết bài tuyển sinh!",
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Tuyển dụng"
+          name="tuyen_dung"
+          rules={[
+            {
+              required: true,
+              message: "Vui nhập link bài liên kết bài tuyển dụng!",
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
           label="Chương trình đào tạo"
           name="program_url"
           rules={[
@@ -117,6 +150,13 @@ const AdminFooter = () => {
           label="Website"
           name="website"
           rules={[{ required: true, message: "Vui nhập link website!" }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Youtube"
+          name="youtube"
+          rules={[{ required: true, message: "Vui nhập link youtube!" }]}
         >
           <Input />
         </Form.Item>

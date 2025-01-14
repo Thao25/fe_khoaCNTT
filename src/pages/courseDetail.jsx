@@ -165,7 +165,7 @@ const CourseDetail = () => {
   }
 
   if (!course) {
-    return <p>Không tìm thấy khóa học.</p>;
+    return null;
   }
 
   return (

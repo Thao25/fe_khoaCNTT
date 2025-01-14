@@ -32,22 +32,25 @@ const NotificationDetail = () => {
   }
 
   return (
-    <div className={styles.notificationDetailContainer}>
-      <h1>{notification.Title}</h1>
-      <p className={styles.notificationDate}>
-        {new Date(notification.createdAt).toLocaleString()}
-      </p>
+    <div className={styles.Container}>
+      <div className={styles.notificationDetailContainer}>
+        <h1>{notification.Title}</h1>
+        <p className={styles.notificationDate}>
+          {new Date(notification.createdAt).toLocaleString()}
+        </p>
 
-      {/* Nội dung thông báo */}
-      <div
-        className={styles.notificationContent}
-        dangerouslySetInnerHTML={{
-          __html: notification.Content, // Hiển thị nội dung chi tiết thông báo
-        }}
-      />
+        <div
+          className={styles.notificationContent}
+          dangerouslySetInnerHTML={{
+            __html: notification.Content,
+          }}
+        />
 
-      {/* Thêm liên kết trở về danh sách thông báo */}
-      <Link to="/notifications">Quay lại</Link>
+        {/* Thêm liên kết trở về danh sách thông báo */}
+        <Link to="/notifications" className={styles.back}>
+          Quay lại
+        </Link>
+      </div>
     </div>
   );
 };

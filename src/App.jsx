@@ -16,7 +16,7 @@ const App = () => {
       setAppLoading(true);
       try {
         const res = await axios.get(`http://localhost:1337/menus`);
-        setMenuItems(res.data); // Lưu menu động vào state
+        setMenuItems(res.data);
       } catch (error) {
         console.error("Error fetching menu items", error);
       }
@@ -24,7 +24,7 @@ const App = () => {
     };
 
     fetchMenuItems();
-  }, []);
+  }, [setAppLoading]);
 
   useEffect(() => {
     const fetchAccount = async () => {
@@ -41,7 +41,7 @@ const App = () => {
     };
 
     fetchAccount();
-  }, []);
+  }, [setAuth, setAppLoading]);
 
   return (
     <div>
@@ -59,8 +59,7 @@ const App = () => {
       ) : (
         <>
           <Banner />
-
-          <Header menuItems={menuItems} />
+          {menuItems.length > 0 && <Header menuItems={menuItems} />}
           <Outlet />
           <Footer />
         </>

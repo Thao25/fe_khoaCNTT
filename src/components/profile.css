@@ -1,0 +1,145 @@
+/* Tổng thể trang */
+.profile-page {
+  padding: 30px;
+  background-color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+
+  border-radius: 8px;
+}
+
+.profile-card {
+  width: 1000px;
+  background: linear-gradient(to bottom, #b4c4f0, #edf1fd);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
+.profile-avatar-col {
+  width: 150px; /* Chiều rộng cố định */
+  height: 200px; /* Chiều cao cố định */
+  position: relative;
+}
+
+.profile-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Giữ nguyên tỷ lệ và kích thước ảnh */
+  border-radius: 8px;
+}
+
+/* Chỉnh sửa style chữ */
+.profile-header h2 {
+  font-size: 26px;
+  color: #4caf50;
+  font-weight: bold;
+  margin-bottom: 8px;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Thêm hiệu ứng hover cho tên */
+.profile-header h2:hover {
+  color: #004d40;
+}
+
+.profile-header p {
+  color: #555;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+/* Style cho thông tin người dùng */
+.profile-info .ant-row {
+  margin-bottom: 10px;
+  background: linear-gradient(to bottom, #b4c4f0, #edf1fd);
+}
+
+.profile-info .ant-col:nth-child(1) {
+  font-weight: bold;
+  color: #223771;
+}
+
+.profile-info .ant-col:nth-child(2) {
+  color: #333;
+}
+
+.profile-info .ant-row strong {
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* Style cho nút chỉnh sửa */
+.edit-button {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.edit-button .ant-btn {
+  background-color: #223771;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hiệu ứng hover cho nút */
+.edit-button .ant-btn:hover {
+  background-color: #004d40;
+  transform: scale(1.05);
+}
+
+/* Style cho phần thông tin đặc biệt theo vai trò */
+.special-info {
+  background-color: #f1f8e9;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.special-info strong {
+  color: #388e3c;
+  font-weight: bold;
+}
+
+.special-info .ant-col:nth-child(2) {
+  color: #444;
+}
+
+/* Thêm hiệu ứng cho Modal */
+.ant-modal {
+  border-radius: 15px;
+  background: linear-gradient(135deg, #80deea, #e0f7fa);
+}
+
+.ant-modal-header {
+  background-color: #00796b;
+  color: white;
+  font-weight: bold;
+}
+
+.ant-modal-footer {
+  border-top: 1px solid #00796b;
+}
+
+/* Style cho phần mobile */
+@media screen and (max-width: 768px) {
+  .profile-card {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .profile-header h2 {
+    font-size: 22px;
+  }
+
+  .profile-header p {
+    font-size: 14px;
+  }
+
+  .edit-button .ant-btn {
+    font-size: 14px;
+  }
+}

@@ -8,6 +8,7 @@ import {
 } from "@ant-design/icons";
 import MyEditor from "../pages/editor";
 import { Link } from "react-router-dom";
+
 const NotificationAdmin = () => {
   const [notifications, setNotifications] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -131,6 +132,11 @@ const NotificationAdmin = () => {
   // Cấu hình table
   const columns = [
     {
+      title: "STT",
+      dataIndex: "stt",
+      render: (_, __, index) => index + 1,
+    },
+    {
       title: "Tiêu đề",
       dataIndex: "Title",
       key: "title",
@@ -145,7 +151,6 @@ const NotificationAdmin = () => {
       dataIndex: "Content",
       key: "content",
       render: (text) => {
-        // Cắt chuỗi nội dung và đảm bảo cắt không phá vỡ HTML
         const truncatedText =
           text.length > 100 ? text.substring(0, 100) + "..." : text;
 
@@ -154,6 +159,7 @@ const NotificationAdmin = () => {
             dangerouslySetInnerHTML={{
               __html: truncatedText,
             }}
+            style={{ fontSize: "14px", fontWeight: "normal" }}
           />
         );
       },
@@ -196,7 +202,7 @@ const NotificationAdmin = () => {
         onClick={showAddModal}
         style={{ marginBottom: 20 }}
       >
-        Thêm thông báo mới
+        Đăng thông báo mới
       </Button>
 
       <Input
@@ -215,7 +221,7 @@ const NotificationAdmin = () => {
       />
 
       <Modal
-        title={editNotification ? "Sửa thông báo" : "Thêm thông báo mới"}
+        title={editNotification ? "Sửa thông báo" : "Đăng thông báo mới"}
         visible={isModalVisible}
         onCancel={handleCancel}
         footer={null}

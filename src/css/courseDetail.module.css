@@ -76,19 +76,16 @@ ul li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 1px;
   margin-left: 30px;
   margin-right: 30px;
-  padding: 8px 12px;
+  padding: 5px 12px;
   border-radius: 6px;
   background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
 }
 
 ul li:hover {
-  background-color: #f0f8ff;
-  transform: translateX(5px);
+  background-color: #fff;
 }
 
 /* Button styles */
@@ -100,7 +97,6 @@ button {
   cursor: pointer;
   border-radius: 5px;
   font-size: 14px;
-  transition: background-color 0.3s ease;
 }
 
 button:hover {

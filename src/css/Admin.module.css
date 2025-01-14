@@ -2,11 +2,12 @@
 
 /* Định dạng Sidebar */
 .sidebar {
-  background: "linear-gradient(to right, #00c3e50,#001529)"; /* Xám đậm */
+  background: "linear-gradient(to right, #333,#333)"; /* Xám đậm */
   box-shadow: 2px 0px 20px rgba(0, 0, 0, 0.1);
   height: auto;
   padding: 20px;
   transition: width 0.3s ease-in-out;
+  background-color: #333;
 }
 
 /* Mở rộng sidebar khi hover */
@@ -47,7 +48,7 @@
 .menuItem {
   font-weight: 500;
   font-size: 16px;
-  color: #b0b0b0; /* Màu chữ sáng */
+  color: #fff; /* Màu chữ sáng */
   padding-top: 12px;
   transition: all 0.3s ease-in-out;
   border-radius: 4px;
@@ -58,7 +59,7 @@
 
 /* Định dạng SubMenu */
 .ant-menu-submenu {
-  background-color: transparent !important; /* Đảm bảo SubMenu có nền trong suốt */
+  /* background-color: transparent ; */
   font-size: 16px;
   color: #b0b0b0;
 }
@@ -77,8 +78,7 @@
 /* Khi hover vào SubMenu Title */
 .ant-menu-submenu-title:hover {
   background-color: #4caf50; /* Xanh lá khi hover */
-  color: #fff; /* Chữ trắng khi hover */
-  transform: scale(1.05); /* Tăng kích thước khi hover */
+  color: #fff !important; /* Chữ trắng khi hover */
 }
 
 /* Menu Item trong SubMenu */
@@ -121,7 +121,6 @@
 
 /* Hiệu ứng hover cho Content */
 .content:hover {
-  transform: scale(1.02);
   box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
 }
 

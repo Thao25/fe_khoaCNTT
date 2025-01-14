@@ -1,0 +1,57 @@
+/* CSS cho phần menu */
+.ant-menu-horizontal .ant-menu-item {
+  background-color: #363636; /* Màu nền tối cho các mục menu */
+  color: white; /* Màu chữ trắng */
+  font-size: 14px; /* Kích thước font chữ */
+  margin: 0; /* Loại bỏ khoảng cách giữa các mục */
+  padding: 0 20px; /* Điều chỉnh padding cho các mục menu */
+  border-radius: 8px; /* Bo tròn các góc */
+  height: 40px; /* Đặt chiều cao cố định để tất cả các mục có chiều cao đều */
+  align-items: center; /* Căn giữa nội dung trong mỗi mục */
+  justify-content: center;
+  position: relative;
+}
+
+/* Đảm bảo các mục submenu cũng có kiểu dáng giống nhau */
+.ant-menu-submenu {
+  background-color: #363636; /* Màu nền cho submenu */
+  margin: 0;
+  padding: 0 16px; /* Padding giống nhau cho submenu */
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Các mục liên kết trong menu */
+.menu-item-link {
+  color: #fff !important; /* Màu chữ mặc định */
+  text-decoration: none; /* Bỏ gạch chân */
+  font-weight: 500;
+  padding: 0px 5px;
+}
+
+.submenu-item-link {
+  padding: 0 10px;
+  color: #fff !important; /* Đặt màu chữ cho các submenu */
+}
+.submenu-item {
+  padding: 0 !important;
+  margin: 0 !important;
+  background-color: #363636 !important;
+  border-radius: 0 !important;
+}
+
+/* Menu con (submenu) */
+.ant-menu-submenu .ant-menu {
+  background-color: transparent !important; /* Đặt nền submenu là trong suốt */
+  border: none; /* Nếu bạn không muốn viền, bỏ viền đi */
+  box-shadow: none; /* Tắt bóng nếu có */
+  width: fit-content !important;
+  border-radius: 0 !important;
+  display: block !important;
+  position: absolute !important; /* Đặt submenu trong vị trí tuyệt đối */
+  left: 0 !important; /* Dịch submenu từ mép trái của menu */
+  top: 100% !important; /* Đảm bảo submenu không bị lệch về phía trên */
+}
