@@ -1,7 +1,6 @@
 /* AutoSlideCarousel.css */
 .auto-slide-carousel {
   width: 1100px;
-
   margin: 5px auto;
   background-color: aliceblue;
   border-radius: 8px;
@@ -10,6 +9,7 @@
   max-width: 1400px;
   margin: 0 auto;
   background-color: aliceblue;
+  border-bottom: 5px solid #be0f0f;
 }
 .carousel-slide {
   display: flex;

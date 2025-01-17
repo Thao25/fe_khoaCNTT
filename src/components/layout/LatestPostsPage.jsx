@@ -9,7 +9,7 @@ const LatestPostsPage = () => {
   const [selectedImage, setSelectedImage] = useState("");
   useEffect(() => {
     axios
-      .get("http://localhost:1337/posts?_sort=published_at:DESC&_limit=3")
+      .get("http://localhost:1337/posts?_sort=published_at:DESC&_limit=4")
       .then((response) => {
         setPosts(response.data);
         if (response.data.length > 0) {
@@ -36,21 +36,21 @@ const LatestPostsPage = () => {
         <span className="line">|</span>
       </h2>
       <div className="latest-posts-page-content">
-        <div className="image-section">
+        {/* <div className="image-section">
           <img
             src={`http://localhost:1337${selectedImage}`}
             alt="Post Image"
             className="background-image"
           />
-        </div>
+        </div> */}
 
         <div className="posts-section">
           <Row gutter={12}>
             {posts.map((post) => (
               <Col
-                span={8}
+                span={6}
                 key={post.id}
-                onClick={() => handleImageClick(post.Image[0]?.url)}
+                // onClick={() => handleImageClick(post.Image[0]?.url)}
               >
                 <Card
                   hoverable

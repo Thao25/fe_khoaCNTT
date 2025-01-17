@@ -48,6 +48,7 @@ const router = createBrowserRouter([
         path: "course/submenu/:subMenuSlug",
         element: <SubmenuPage />,
       },
+
       {
         path: "course/:id",
         element: <CourseDetail />,

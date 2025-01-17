@@ -1,0 +1,44 @@
+.featured-container {
+  padding: 20px 10px 10px 20px;
+  background-color: aliceblue;
+}
+
+/* Định dạng cho mỗi bài viết nổi bật */
+.featured-articles .ant-card {
+  display: flex; /* Sử dụng Flexbox để chia bố cục */
+  flex-direction: row; /* Chia theo hàng ngang (ảnh bên trái, nội dung bên phải) */
+  align-items: flex-start; /* Căn chỉnh các phần tử theo chiều dọc */
+  justify-content: flex-start;
+  margin: 20px; /* Khoảng cách giữa các card */
+}
+
+/* Ảnh sẽ chiếm 40% của card */
+.featured-articles .ant-card-cover {
+  flex: 0 0 40%; /* Ảnh chiếm 40% chiều rộng */
+  width: 100%; /* Chiếm đầy không gian ngang */
+  height: 100%; /* Chiều cao cố định cho ảnh */
+  object-fit: cover; /* Đảm bảo ảnh không bị méo */
+}
+
+/* Nội dung sẽ chiếm 60% của card */
+.featured-articles .ant-card-meta {
+  flex: 0 0 60%; /* Nội dung chiếm 60% chiều rộng */
+  padding-left: 0; /* Thêm khoảng cách giữa ảnh và nội dung */
+}
+
+/* Tiêu đề bài viết */
+.featured-articles .ant-card-meta-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Mô tả bài viết */
+.article-preview {
+  font-size: 14px;
+  color: #0e0101;
+  line-height: 1.5;
+  height: 78px; /* Chiều cao cố định cho nội dung */
+  overflow: hidden;
+}

@@ -1,0 +1,58 @@
+/* AboutUs.css */
+.aboutus-container {
+  padding: 40px 20px;
+  background-color: #f5f5f5;
+  background-image: url("https://scontent.fhan3-1.fna.fbcdn.net/v/t39.30808-6/473202623_960088439597820_6215179202420482936_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeEXXO8d74Uq7ciZ7WyhpfngvQMQOSjMtLm9AxA5KMy0udD6JUDnrsbcYcyijkMzCWLVGiDoxT6UdCedaFjcAqLp&_nc_ohc=MRBr3Ua4ipgQ7kNvgG3FqcT&_nc_oc=AdieO80_XithOg6VhB1eLFMGbfnS-86zFagzMk-T42GBHy54FY5gGnl37ztoYW8SSu7Nl9cDncT5rtllcOPZyy1z&_nc_zt=23&_nc_ht=scontent.fhan3-1.fna&_nc_gid=A8UftEJfoFFG9Cdgte_tEzs&oh=00_AYCU3YpCZTHd7wJ0Hjy3V-RPJqQt6ZEwvjwdRvk1sdPXGQ&oe=678DC15B");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.aboutus-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Làm mờ nền */
+}
+
+.aboutus-content {
+  text-align: center;
+  color: white;
+  z-index: 1;
+  position: relative;
+}
+
+.aboutus-description {
+  font-size: 18px;
+  margin: 10px 100px;
+  line-height: 1.5;
+
+  color: #fff;
+}
+
+.aboutus-mission-vision {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.aboutus-section-title .aboutus-paragraph {
+  text-align: center;
+  color: #1890ff;
+  font-weight: bold;
+}
+
+.aboutus-mission-content,
+.aboutus-vision-content {
+  text-align: center;
+  padding: 15px;
+  font-size: 18px;
+}
+.aboutus-paragraph {
+  text-align: center;
+  padding: 0 15px;
+  font-size: 18px;
+  color: #fff;
+}

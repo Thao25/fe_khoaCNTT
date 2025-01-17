@@ -31,7 +31,7 @@ const AutoSlideCarousel = () => {
           autoplay
           arrows
           dotPosition="bottom"
-          autoplaySpeed={9000}
+          autoplaySpeed={10000}
           beforeChange={handleBeforeChange}
         >
           {posts.map((post) => (

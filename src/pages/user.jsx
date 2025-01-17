@@ -136,7 +136,7 @@ const UserPage = () => {
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
+            flexDirection: "row",
             alignItems: "center",
             gap: "10px",
           }}
@@ -167,7 +167,7 @@ const UserPage = () => {
                 onClick={() => handleChangeStatus(record._id, !record.isActive)}
                 style={{ display: "flex", alignItems: "center" }}
               >
-                {record.isActive ? "Khóa" : "Kích hoạt"}
+                {/* {record.isActive ? "Khóa" : "Kích hoạt"} */}
               </Button>
             </>
           )}
@@ -375,7 +375,6 @@ const UserPage = () => {
           columns={columns}
           pagination={true}
           rowKey="_id"
-          style={{ width: "100%" }}
         />
       </Spin>
       <Modal

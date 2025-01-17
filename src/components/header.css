@@ -11,7 +11,13 @@
   justify-content: center;
   position: relative;
 }
+.ant-menu-horizontal .ant-menu-item:hover {
+  background-color: rgb(118, 138, 180) !important;
+}
 
+.menu-item:hover {
+  background-color: rgb(118, 138, 180) !important;
+}
 /* Đảm bảo các mục submenu cũng có kiểu dáng giống nhau */
 .ant-menu-submenu {
   background-color: #363636; /* Màu nền cho submenu */
@@ -54,4 +60,7 @@
   position: absolute !important; /* Đặt submenu trong vị trí tuyệt đối */
   left: 0 !important; /* Dịch submenu từ mép trái của menu */
   top: 100% !important; /* Đảm bảo submenu không bị lệch về phía trên */
+}
+.submenu-item:hover {
+  background-color: rgb(118, 138, 180) !important;
 }

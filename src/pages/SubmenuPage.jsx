@@ -12,7 +12,7 @@ const SubmenuPage = () => {
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1); // Trang hiện tại
   const [totalPages, setTotalPages] = useState(1); // Tổng số trang
-  const articlesPerPage = 6;
+  const articlesPerPage = 8;
 
   // Lấy danh sách tất cả submenu từ API
   useEffect(() => {

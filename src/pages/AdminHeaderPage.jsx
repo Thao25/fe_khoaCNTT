@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Button, Modal, Collapse, message, Skeleton, Popconfirm } from "antd";
-import { EditOutlined, DeleteOutlined, DownOutlined } from "@ant-design/icons";
+import {
+  EditOutlined,
+  DeleteOutlined,
+  DownOutlined,
+  CheckOutlined,
+  CloseOutlined,
+} from "@ant-design/icons";
 import MenuForm from "../components/MenuForm";
 import SubmenuForm from "../components/SubmenuForm";
 import ArticleForm from "../components/ArticleForm";
@@ -20,6 +26,7 @@ const AdminHeaderPage = () => {
   const [currentMenu, setCurrentMenu] = useState(null);
   const [currentSubmenu, setCurrentSubmenu] = useState(null);
   const [currentArticle, setCurrentArticle] = useState(null);
+  const [featuredArticles, setFeaturedArticles] = useState([]);
 
   useEffect(() => {
     const fetchMenus = async () => {
@@ -139,6 +146,76 @@ const AdminHeaderPage = () => {
     } catch (error) {
       message.error("Xóa thất bại");
     }
+  };
+  const toggleIsFeatured = async (articleId, currentStatus) => {
+    // Cập nhật trạng thái trong menus ngay lập tức
+    setMenus((prevMenus) =>
+      prevMenus.map((menu) => {
+        // Cập nhật trong menu chứa các submenu
+        if (menu.submenus) {
+          menu.submenus = menu.submenus.map((submenu) => {
+            // Cập nhật trong submenu nếu có
+            if (submenu.articles) {
+              submenu.articles = submenu.articles.map((article) =>
+                article.id === articleId
+                  ? { ...article, isFeatured: !currentStatus }
+                  : article
+              );
+            }
+            return submenu;
+          });
+        }
+
+        // Cập nhật trực tiếp trong menu nếu có articles
+        if (menu.articles) {
+          menu.articles = menu.articles.map((article) =>
+            article.id === articleId
+              ? { ...article, isFeatured: !currentStatus }
+              : article
+          );
+        }
+        return menu;
+      })
+    );
+
+    // Gửi yêu cầu PUT lên server để cập nhật trạng thái mới của bài viết
+    await axios
+      .put(`http://localhost:1337/articles/${articleId}`, {
+        isFeatured: !currentStatus,
+      })
+      .then((response) => {
+        console.log("Cập nhật trạng thái isFeatured thành công:", response);
+      })
+      .catch((error) => {
+        console.error("Có lỗi khi thay đổi trạng thái isFeatured:", error);
+
+        // Nếu có lỗi xảy ra, khôi phục lại trạng thái ban đầu trong menus
+        setMenus((prevMenus) =>
+          prevMenus.map((menu) => {
+            if (menu.submenus) {
+              menu.submenus = menu.submenus.map((submenu) => {
+                if (submenu.articles) {
+                  submenu.articles = submenu.articles.map((article) =>
+                    article.id === articleId
+                      ? { ...article, isFeatured: currentStatus }
+                      : article
+                  );
+                }
+                return submenu;
+              });
+            }
+
+            if (menu.articles) {
+              menu.articles = menu.articles.map((article) =>
+                article.id === articleId
+                  ? { ...article, isFeatured: currentStatus }
+                  : article
+              );
+            }
+            return menu;
+          })
+        );
+      });
   };
 
   return (
@@ -283,10 +360,10 @@ const AdminHeaderPage = () => {
                                           return article ? (
                                             <li key={article.id}>
                                               <div>
-                                                {article.title}
-                                                <div>
+                                                {article.title.substring(0, 50)}
+                                                {/* <div>
                                                   ID: <span>{article.id}</span>
-                                                </div>
+                                                </div> */}
                                               </div>
                                               <EditOutlined
                                                 onClick={() =>
@@ -309,6 +386,26 @@ const AdminHeaderPage = () => {
                                               >
                                                 <DeleteOutlined />
                                               </Popconfirm>
+                                              <Button
+                                                type="primary"
+                                                onClick={() =>
+                                                  toggleIsFeatured(
+                                                    article.id,
+                                                    article.isFeatured
+                                                  )
+                                                }
+                                                size="small"
+                                                // icon={article.isFeatured ? <CheckOutlined /> : ""}
+                                                style={
+                                                  article.isFeatured
+                                                    ? { backgroundColor: "red" }
+                                                    : {}
+                                                }
+                                              >
+                                                {article.isFeatured
+                                                  ? "nổi bật"
+                                                  : "Không nổi bật"}
+                                              </Button>
                                             </li>
                                           ) : null;
                                         })}
@@ -329,11 +426,11 @@ const AdminHeaderPage = () => {
                         {menu.articles.map((article) => (
                           <li key={article.id}>
                             <div>
-                              {article.title}
-                              <div>
+                              {article.title.substring(0, 50)}
+                              {/* <div>
                                 ID:
                                 <span>{article.id}</span>
-                              </div>
+                              </div> */}
                             </div>
                             <EditOutlined
                               onClick={() =>
@@ -350,6 +447,21 @@ const AdminHeaderPage = () => {
                             >
                               <DeleteOutlined />
                             </Popconfirm>
+                            <Button
+                              type="primary"
+                              onClick={() =>
+                                toggleIsFeatured(article.id, article.isFeatured)
+                              }
+                              size="small"
+                              // icon={article.isFeatured ? <CheckOutlined /> : ""}
+                              style={
+                                article.isFeatured
+                                  ? { backgroundColor: "red" }
+                                  : {}
+                              }
+                            >
+                              {article.isFeatured ? "nổi bật" : "Không nổi bật"}
+                            </Button>
                           </li>
                         ))}
                       </ul>

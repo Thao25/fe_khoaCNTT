@@ -102,7 +102,7 @@ const ProfilePage = () => {
               )}
               {user.role === "student" && (
                 <Col span={12}>
-                  <strong>Lớp:</strong> {user.class}
+                  <strong>Lớp:</strong> {user.studentClass}
                 </Col>
               )}
 

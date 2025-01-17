@@ -81,7 +81,7 @@ const MenuPage = () => {
   }
 
   if (!menuData) {
-    return <div>Menu not found</div>;
+    return null;
   }
 
   return (

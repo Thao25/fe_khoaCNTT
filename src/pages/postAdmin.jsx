@@ -237,7 +237,15 @@ const PostAdmin = () => {
     {
       title: "Hành động",
       render: (text, post) => (
-        <div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            gap: "10px",
+            width: "100%",
+          }}
+        >
           <Button
             icon={<EditOutlined />}
             onClick={() => handleAddEditPost(post)}

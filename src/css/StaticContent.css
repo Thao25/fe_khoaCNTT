@@ -1,0 +1,83 @@
+/* StaticContent.css */
+.static-content-container {
+  position: relative;
+  padding: 30px 0;
+  text-align: center;
+  color: #fff;
+}
+
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("https://scontent.fhan3-2.fna.fbcdn.net/v/t39.30808-6/473261639_960088676264463_7481041018275755521_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_eui2=AeHBme5OEUZmshEcXCiy9beJKZ5l_rTFEIMpnmX-tMUQg3rH_d-VGm8CdRndK8hInJ3vw-th3G1PpUUzICPtw2LF&_nc_ohc=x0axTsxXktUQ7kNvgG_TcbI&_nc_oc=AdjZNkZsNxaRlMQuDcWm8BhzwZJSK3VscLP-AiTH_C0VZNk2FFEbI23ydpXZ7t3_XB2Im-QOonnHqyKzg0yDRUA5&_nc_zt=23&_nc_ht=scontent.fhan3-2.fna&_nc_gid=AN_eAnWYvPGoEZQPriaWjgR&oh=00_AYC8CBAv7tN5E6nRwGbAOsCuXE29ridzDi7qQPt0LKdoTQ&oe=678DD358"); /* Chèn link ảnh nền đẹp */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5;
+  z-index: -1;
+  animation: fadeIn 3s ease-out;
+}
+
+.content-row {
+  z-index: 1;
+  margin: 0 20px;
+}
+
+.static-card {
+  background-color: rgba(
+    85,
+    80,
+    80,
+    0.9
+  ); /* Màu nền thẻ sáng và bán trong suốt */
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  color: #fff;
+}
+
+.static-card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.ant-card-title {
+  font-weight: bold;
+  color: #1890ff;
+  font-size: 24px;
+}
+
+.ant-card-body {
+  color: #333;
+  font-size: 16px;
+}
+
+.ant-typography {
+  color: #333;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 767px) {
+  .static-card {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .static-content-container {
+    padding: 60px 10px;
+  }
+
+  .static-card {
+    margin-bottom: 15px;
+  }
+}
